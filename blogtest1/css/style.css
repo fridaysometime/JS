@@ -1,0 +1,248 @@
+/*normalize css or reset css, download css
+file on line*/
+/*先要宏观的布局，再做细节*/
+body{
+  margin: 0;
+}
+nav{
+  background: rgba(0, 0, 0, 0.09);
+  height: 50px;
+}
+header{
+  background: rgba(0, 0, 0, 0.3);
+}
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+#banner{
+  background: transparent;
+  height: 700px;
+}
+nav ul{
+  list-style: none;
+  margin: 0;
+  float: right;
+  position: fixed;
+  right: 10px;
+  z-index: 1;
+}
+nav ul li, span.now{
+  display: inline-block;
+  line-height: 50px;
+  margin-right: 20px;
+
+}
+nav ul li a{
+  line-height: 50px;
+  text-decoration: none;
+  display: inline-block;
+  height: inherit;
+  color: #fff;
+}
+span.now{
+  float: left;
+  padding-left: 10px;
+  position: fixed;
+  top: 0;
+  left: 20px;
+  z-index: 1;
+}
+p{
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+span.now a{
+  font-size: 20px;
+  font-weight: 300px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #fff;
+}
+#banner .inner{
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  top: 160px;
+  text-align: center;
+  color: #fff;
+}
+#banner .inner h1{
+  margin: 0;
+
+}
+button{
+  border: none;
+  display:block;
+  margin: 0 auto;
+}
+#banner button{
+  padding: 14px 30px;
+  letter-spacing: 5px;
+  border-radius: 5px;
+  background-color: #089db0;
+  color: #fff;
+  cursor: pointer;
+}
+.inner p{
+  line-height: 25px;
+}
+.inner span{
+  margin-top: 240px;
+  display: block;
+}
+.green{
+  background: #089db0;
+  color: #fff;
+  text-align: center;
+  padding: 80px 0;
+}
+.wrapper{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.wrapper h2, .purple h2{
+  margin: 0;
+}
+.wrapper p{
+  font-size: 18px;
+}
+.hr{
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin: 20px auto;
+}
+.green .hr{
+  display: block;
+  width: 60%;
+  background-color: #078494;
+}
+.inner .hr{
+  display: block;
+  width: 50%;
+  margin: 15px auto;
+  background-color: #fff;
+}
+.icon-group{
+  margin-top: 60px;
+}
+.wrapper .icon-group .icon{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: #0d6f7c;
+  transform: rotate(45deg);
+  margin: 20px;
+}
+.context:nth-child(even){
+  background-color: #29295c;
+}
+.context:nth-child(odd){
+  background-color: #696969;
+}
+
+.context{
+  background: #000;
+  overflow: hidden;
+}
+
+.context::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.img_sec{
+  width: 45%;
+}
+.img_sec img{
+  width: 100%;
+}
+div.txt_sec {
+  width: 55%;
+  display: inline;
+  position: relative;
+  top: 70px;
+  left: 30px;
+
+}
+.txt_sec p{
+  color: #fff;
+}
+.txt_sec h2{
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.context>div{
+  float: left;
+  font-size: 0px;
+}
+.purple{
+  width: 100%;
+  background: #262149;
+  color: #fff;
+  text-align: center;
+}
+.purple h2{
+  padding:20px 0;
+}
+.card{
+  float: left;
+  width: 50%;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+.card p{
+  padding: 40px 10px;
+}
+.card h3{
+  padding-top: 20px;
+}
+.card:first-child{
+  background: rgba(0, 0, 0, 0.04);
+}
+.card:nth-child(2){
+  background: rgba(0, 0, 0, 0.08);
+}
+.card:nth-child(3){
+  background: rgba(0, 0, 0, 0.12);
+}
+.card:nth-child(4){
+  background: rgba(0, 0, 0, 0.16);
+}
+.card:nth-child(5){
+  background: rgba(0, 0, 0, 0.20);
+}
+.card:nth-child(6){
+  background: rgba(0, 0, 0, 0.24);
+}
+.purple .hr{
+  display: block;
+  width: 60%;
+  background-color:#1b1642;
+  margin: 10px auto;
+}
+footer{
+  background: #333;
+  color: #fff;
+  min-height: 150px;
+  text-align: center;
+}
+ul.sharegroup{
+  margin: 0 auto;
+  width: 1080px;
+  padding: 30px;
+}
+.sharegroup li{
+  display: inline-block;
+  padding: 10px;
+}
+.mainwrapper{
+  background-image: url(../img/banner.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
