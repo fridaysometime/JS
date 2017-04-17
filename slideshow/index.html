@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>slideshow_test</title>
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <!--用来显示轮播页所在的页码位置-->
+            <img src="img/img1.jpg" style="width:100%">
+            <div class="text">Caption Text</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="img/img2.jpg" style="width:100%">
+            <div class="text">Caption Two</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="img/img3.jpg" style="width:100%">
+            <div class="text">Caption Three</div>
+        </div>
+
+        <a class="prev">&#10094;</a>
+        <!--前后翻页，&#10094;为特殊的Unicode字符，箭头，请见https://www.w3schools.com/charsets/ref_utf_misc_symbols.asp-->
+        <a class="next">&#10095;</a>
+    </div>
+    <br>
+    <!--圆点坐标按钮组，看到当前图片所在图片组的位置-->
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</body>
+<script src="js/script.js" type="text/javascript"></script>
+</html>
