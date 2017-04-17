@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS_animated</title>
+    <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+      ul{
+        list-style-type: none;
+        margin: 0;
+      }
+      li{
+        margin: 50px;
+        width: 200px;
+        height: 100px;
+        background: yellow;
+      }
+      div#div1,div#div2,div#div3,div#div4{
+        width: 200px;
+        height: 200px;
+        background:red;
+        margin:20px;
+        float: left;
+        filter: alpha(opacity:30);
+        opacity: 0.3;
+      }
+    </style>
+  </head>
+  <body>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+
+  </body>
+  <script type="text/javascript">
+    window.onload=function(){
+    var aLi=document.getElementsByTagName('li');
+    for( var i=0,len=aLi.length;i<len;i++){
+      aLi[i].timer=null;
+      aLi[i].onmouseover=function(){
+        startMove(this,400);
+      }
+      aLi[i].onmouseout=function(){
+        startMove(this,200);
+      }
+  }
+  var oDiv=document.getElementsByTagName('div');
+  for(var j=0;j<oDiv.length;j++){
+//     oDiv[j].timer=null;
+     oDiv[j].alpha=30;
+     oDiv[j].onmouseover=function(){
+       startMove1(this,100);
+     }
+     oDiv[j].onmouseout=function(){
+       startMove1(this,30);
+     }
+   }
+  }
+//注意当多个物体运动的时候，所有的东西都不能共用。因为这样就混淆了到底是用了哪个。所以需要把要改变的属性，设置为每个元素的。
+//缓冲运动的思路：用target-offset，这个值是变动的
+//  var timer=null;
+  function startMove(obj,target){
+    clearInterval(obj.timer);
+    obj.timer=setInterval(function(){
+      var speed=0;
+      speed=(target-obj.offsetWidth)/10;
+      speed=(speed>0)?Math.ceil(speed):Math.floor(speed);
+      if(obj.offsetWidth===target){
+        clearInterval(obj.timer);
+      }
+      else{
+        obj.style.width=obj.offsetWidth+speed+'px';
+    }
+    },30)
+  }
+  //透明度没有一个可以直接使用的，通过定义一个变量，在判断，在赋值。目前学习的都是匀速运动
+//  var alpha=30;
+  function startMove1(obj,target){
+    clearInterval(obj.timer);
+    obj.timer=setInterval(function(){
+      var speed=0;
+      speed=(obj.alpha>target)?-10:10;
+      if(obj.alpha===target){
+        clearInterval(obj.timer);
+      }
+      else{
+        obj.alpha+=speed;
+        obj.style.filter='alpha(opacity:'+obj.alpha+')';
+        obj.style.opacity=obj.alpha/100;
+    }
+    },30)
+  }
+  </script>
+</html>

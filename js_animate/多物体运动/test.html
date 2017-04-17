@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS_animated</title>
+    <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+      div{
+        width: 200px;
+        height: 200px;
+        background:red;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="div1"></div>
+
+  </body>
+  <script type="text/javascript">
+    window.onload=function(){
+        startMove();
+  }
+//注意当多个物体运动的时候，所有的东西都不能共用。因为这样就混淆了到底是用了哪个。所以需要把要改变的属性，设置为每个元素的。
+//缓冲运动的思路：用target-offset，这个值是变动的
+//
+  function startMove(){
+    setInterval(function(){
+        var oDiv=document.getElementById('div1');
+        oDiv.style.width=parseInt(getstyle(oDiv,'width'))-1+'px';
+    },30)
+  }
+  //为什么要用getstyle函数：因为当有border的时候，直接用offsetWidth-1这样不会使得窗口减小反而会按照一像素增大
+  //为什么呢？因为在一开始offsetWidth是202，此时oDiv.style.width=201，而这时offsetWidth又是203，以此类推
+  //如果将width这个样式写成内联的形式，用parseInt可以完成缩小。但我们不能把所有的样式都写成内联的形式
+  //用getstyle函数解决这个问题
+  function getstyle(obj,attr){
+    if(obj.currentStyle){
+      return obj.currentStyle[attr]; //针对IE浏览器
+    }else{
+      return getComputedStyle(obj,false)[attr];  //针对火狐浏览器
+    }
+  }
+  </script>
+</html>
