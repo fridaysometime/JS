@@ -1,0 +1,235 @@
+﻿JS
+概述：
+1>JS是一种具有面向对象能力的，解释性的程序设计语言。基于对象和事件驱动并具有相对安全性的
+客户端脚本。因为它不需要一个语言环境下运行，只需要浏览器支持即可。主要目的是，验证发往服务器端
+数据，增加web互动，加强用户体验等。
+	面向对象：OOP，
+	解释性的：直接读代码运行，不需要编译，
+	事件驱动：在浏览器中有动作发生会触发事件的运行
+	客户端脚本语言：不是在服务器端执行的。在本地打开时会把JS文件临时存在放本地文件夹中，在本地
+	执行JS。
+	脚本语言：不需要环境，浏览器支持即可。
+
+使用JS
+1> 创建一个HTML页面
+	注意网页的编码格式以及文件存储的编码：现在的编码方式主要有两种：utf-8和GB2312， 如果编码方式
+	不同，会导致页面出面乱码，想修改编码方式一般在charset指定，也可以在工具中设置
+2> <script>标签解释
+	是用于在HTML页面中插入JS的主要方法，以下属性
+		1）charset，可选，表示通过Src属性指定的字符集，
+		2）defer:可选，表示脚本可以延迟到文档完全解析和显示后在执行，大多数浏览器不支持，少用
+		（换个方法：把script放在/body后，等HTML页面完全加载后，在执行JS
+		3）language：已废弃
+		4）src:可选，表示包含要执行代码的执行文件
+		5）type：必须的，表示代码使用的脚本语言的内容类型，一般都用“text/javascript"
+	eg
+		<script type="text/javascript">
+		   alert("welcome to javascript");
+		</script>
+3> JS代码嵌入的一些问题
+	如果要弹出script标签的字符串，浏览器会以后JS代码已经结束，不能弹出，解决办法就是把字符串分成
+	两个部分，通过+连接（只发生在代码嵌在HTML文件内，如果代码在外部JS文件中，不存在这个问题）
+	
+	JS代码多的时候，最好存成一个.js文件，放在外部，通过引用SRC,维护性高，可缓存，方便扩展
+	<script>标签必须有</script>,引用外部JS文件时候，标签内不能有任何代码
+	一般这个标签是放在head之间，但有时候需要让文本先加载，这样把标签放在/body前面。
+	
+	现在浏览器都支持JS，没必要用noscript。除非你自己禁用Javascript
+
+语法，关键字以及变量
+1）区分大小写，text和TEXT是两种不同的标识符
+		标识符组成开头：字母，下划线，和$
+		其他组成，以上三种加数字
+		不同把关键字作为标识符，true，false
+2）注释
+		单行注释或对代码进行说明或调试：//
+		多行块级注释：/*.....*/
+3）变量：程序中直接显示的
+		数字变量 123
+		字符串  "abd"
+		布尔变量  ture false
+		正则表达式变量  /js/gi
+		对象变量表达式 {x:1,y:2}
+		数组变量表达式  [1,2,3]
+		对象变量 null
+4）关键字和保留字
+	区别：关键字是程序中已经使用的，保留字是现在还没用到，以后可能会用到。这些都不能用做标识符
+5）变量
+	声明变量：相当于造盒子；造容器
+	变量初始化：将一个值放到盒子里
+	输出变量的值；目前学到的，alert();
+	变量如果没有初始化，就是undefined，声明未赋值，未定义变量
+		
+	JS是松散型的，可以同时改变不同类型的变量；但对后期维护带来困难，隐式类型的转换消耗资源
+	有var和没有var的声明，作用域不同
+	多个语句声明变量的时候，可以写在一行：var box=10;var age=28;
+	当每条语句都在不同行时候，可以省略分号。不喜欢，不要用
+	可以用一条语句定义多个变量，eg 
+	var box=1,
+		age=28,
+		height=32;
+
+数据类型1
+	1）js不支持任何自定义类型的数据
+	2）typeof操作符
+		是用来检测变量的数据类型，对于值或变量使用typeof操作符会返回字符串；
+		返回的字符串有：
+		1》undefined：未定义
+		var box;
+		alert(typeof box); box没有初始化，所以是Undefined类型，值是undefined，类型返回的字符串是
+		undefined；
+		2》boolean：布尔类型
+		var box=true;
+		alert(typeof box);box是Boolean类型，值是true，类型返回的字符串是boolean;
+		3》string类型
+		var box=“abc”;
+		alert(typeof box);box是String类型，值是abc，类型返回的字符串是string;
+		4》number类型
+		var box=250;
+		alert(typeof box);box是Number类型，值是250，类型返回的字符串是number;
+		5》object类型
+		var box={};//空的对象，表现这个对象创建了，但是里面没东西，空对象是null
+		alert(typeof box);box是Object类型，值是[object Object]，类型返回的字符串是object;
+	    6》null对象
+		var box=null;//空对象的创建方法：也可以是var box=new object();
+		alert(typeof box);box是Null类型，值是null，类型返回的字符串是object;
+		7》function //function 不是数据类型，但也可以用typeof
+		function box{}
+		alert(typeof box);box是Function函数，值是本体function box{}，类型返回的字符串是function;
+		
+		typeof 可以操作变量，也可以操作字面量，
+
+		8》string类型
+		tostring()类型是传参的，但在数值转成字符串的时候，可以
+		传递进制参数。
+		tostring()不适用用于null和undefined类型的值
+		如果是null和undefined类型的，用String（）用于任何类型
+		字符串转换，注意这是转换出来的null是string类型的，也就	
+		其实null的type是“string”
+		9》object类型， var box={};这是对象字面量的创建方法
+		通过new创建一个object
+		var box=new object();
+		Object()可以任意传参，可以传数值，字符串，布尔值，等
+		还可以进行相应的计算
+
+	5）运算符
+		1》一元运算符：
+		递增++，递减--
+		前置递增 i=i+1;运算符会先累加或累减再赋值
+		后置递增 先赋值再累加或累减。
+		2》加和减运算符
+		有字符串就不是加法，就是连接。这个时候的加号就是字符串
+		连接符。只要其中有一个是字符串，那么久自动使用字符串
+		连接符。
+		两个都是数值，那么就按照加法计算.
+		3》比较字符串：关系运算符大多返回一个布尔值，如果只有
+		数值字符串，将它转换成数值，再比较；如果两个都是数值
+		字符串，那么会比较进行第一字符的比较；两个操作数一个是
+		对象，则先调用value或者tostring里的方法，返回值比较；
+		两个操作数都是字符串，则比较ascii编码；null和undefined
+		是相等的，NaN和NaN是不同的。
+		JS里的===：值相等是==，值和类型都相等时===
+		eg: 2=='2',True，2==='2',false.
+		null自动转换成0，但在比较运算上，null和undefined没有自
+		动转换，所以null不等于0
+		4》逻辑运算符：and or not
+		如果两边的有一个操作数不是布尔值的情况下，and运算就不
+		一定返回布尔值。遵循这样的规则：第一个操作数是对象，	
+		则返回第二个操作数；第二个操作数是对象，则第一个操作数
+		true时，才返回第二个操作数，否则返回false；有一个操作	
+		数是null，则返回null；有一个是操作数是undefined，则返			回undefined。逻辑与是短路操作，也就是说如果第一个操作
+		数返回false，则不论第二个操作数是true还是false都返回
+		false
+		5》7种位运算符
+		~：位非；&：位与；^:位或，左移，右移
+		6》赋值运算符=
+		7》字符串运算符：+相连；逗号运算符；三元运算符：判断？	
+		XX：XX；
+	6）运算符的优先级：
+	
+	流程控制语句
+	代码块：用一对花括号括一起的一组语句。也叫复合语句
+		1》if条件分支语句
+		if语句括号里的表达式如果是false的话，只会不执行后面的
+		第一条语句，仍然会执行第二条语句（两条语句没有被花括号
+		）包裹在一条复合语句内，被当做一条语句执行。
+		多重分支，elseif
+		2》switch语句：括号里的语句就是要比较的变量
+		switch（box）{
+			case 1：
+				alert（'one'）;
+				break;
+		}
+		break中途退出，防止穿透，case 1相当于if里的box==1
+ 		default相当于if语句中的else。
+		beak语句是很重要的，否则就不会退出，一层一层的执行完。
+		3》do while循环语句
+		先运行后判断的循环语句，至少循环一次。
+		do{
+		}while(判断语句)
+		当while判断为false时候，退出循环；为true是，继续循环
+		切记循环体的判断要想好，不然可能会出现死循环
+		4》while循环体，先判断在运行
+		5》for 也是先判断，再运行的循环体
+		6》for in语句，是处理对象的语句；可以枚举对象的属性
+		var box={
+  			'name':'abc',
+			  'age':28,
+  			'height':178
+			};
+		for(var i in box){
+  			alert(i);
+			}	
+		7》break和continue语句：用于在循环中精确的控制代码的执
+		行，其中，break语句会立即退出循环，强制继续执行循环体
+		后面的语句，而continue语句退出当前循环，继续后面的循环
+		example:
+		for (var i = 0; i < 10; i++) {
+  			if(i==5) continue;
+  				document.write(i+'<br />')
+			}
+		在这里break和continue的区别是：break是整个跳出循环
+		输出了0,1,2,3,4
+		而continue是除了5以外，其他的都输出了
+		8》with语句
+		var box={
+  			'name':'abc',
+			  'age':28,
+  			'height':178
+			};
+		如果要打印出name age height后面的值可以用with
+		with(box){var n=name;var a=age;var h=height}
+		这里的with（box）可以将box.给省略掉
+		这里的name相当于box.name
+
+	函数：
+		1》函数的声明：
+		function box(参数){
+			函数体；//只有被调用才能执行，本身没有运行功能
+		}
+		可以有参数，也可以没有参数
+		2》return返回值；
+		function box（）{
+			return“我只有被调用才可以执行”；
+		}
+		alert（box（））；只有这样才能显示，如果是调用的话没有			任何显示。打印函数调用返回回来的结果；
+		还可以把函数赋值给一个变量，再对变量进行操作。
+		当一个函数遇到第一个return时，就会终止函数继续往下执行
+		break不能用于if 语句中，也就是说break不能用于终止函数
+		继续往下执行
+		3》arguments对象：不介意传进来多少参数，也不会因为参数
+		不统一而出错。函数体可以通过arguments对象来接收传递过	
+		来的参数。
+		function box() {
+  			return arguments[0]+'|'+arguments[1];
+		}
+		alert(box('abc',23));
+		参数的长度，arguments.length
+		实现动态的传参。利用length这个属性，来智能的判断有多少	
+		参数，然后把参数进行合理的应用。
+		比如，加法运算，不确定要加几个数，就可以用这个方法。
+		4》JS没有函数重载的功能
+		重载就是根据参数选择相同函数名而参数不同的函数。JS相同		名字的函数，后面的会覆盖前面的。所以不要写函数名一样的
+		函数。
+		
+

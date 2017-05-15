@@ -1,0 +1,24 @@
+div:独占一行
+span
+ul ol 列表标记li
+ul type： square, circle, disc
+ol: order list, type,1,a,i
+CSS层叠样式表，替代属性，不用写在标记中
+
+实现 表现与结构分离
+
+CSS常用的选择器
+1 选择器（样式名称：样式值。。。）
+2 通配选择器，选择页面上所有的元素
+*{}
+3 标记选择器：标记名称
+4 class选择器，选中具有相同class属性的元素
+.name of class{}
+5 id选择器
+#id{}
+6 群组选择器
+#id, .name of class, 标记名称{}
+7 派生选择器
+父选择器  子选择器 ul li
+
+css

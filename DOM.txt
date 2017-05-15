@@ -1,0 +1,12 @@
+DOM描述了一个层次化的节点数，允许开发人员添加，移除和修改页面的某一部分
+1. NODE类型
+DOM1定义NODE接口
+常用属性:nodeName,nodeVaule,nodeType
+1.1nodelist是一种类数组的对象，是基于DOM结构动态执行查询的结果，DOM结构
+的变化能够自动的反应在nodelist对象中。并不是array的实例。
+1.2访问nodelist节点
+通过方括号，通过item（）
+somenode.childNodes[0]或者somenode.childNodes.item[0]
+1.3操作节点
+appendChild()用于向childNodes列表的末尾添加一个节点
+
