@@ -1,0 +1,112 @@
+网站访问的过程：
+	加入在浏览器的地址栏输入一个地址，有这样的访问过程
+	浏览器和服务器的交互，服务器和数据库的交互
+	1.浏览器给服务器发一个http请求;
+	2.服务器收到http请求后，web server进行相应的初步处理，使用服务器脚本生成页面。
+	3.服务器脚本调用本地和客户端传来的数据，生成页面，
+	4.web sever将生成的页面作为HTTP响应的body，根据不同的处理结果生成HTTP header，发回客户端
+	5.客户端的浏览器接收到HTTP响应，对HTTP响应里的body里的HTML解析
+	6.解析的过程中遇到引用服务器上的资源，比如css,js,img,等，再像web server发送请求，web server找到
+	对应的文件，发送回来
+	7.浏览器解析HTML包含的内容，用CSS进行外观上的渲染，
+	8.用户与页面的交互，JS对此作出一定的反应。
+	9.交互的过程中，可能需要向服务器提交或索取额外的数据，一般要么是跳转，要么通过js向web server发送请求，
+	web server再用服务器脚本进行处理，把资源返回给客户端，客户端用得到的资源来实现动态效果或其他改变
+	
+	web server: 主要是储存一些HTML，音视频文件，等待浏览器的请求
+	web browser:给web server发送请求，得到回应后解析相应的文件，并呈现在浏览器上，浏览器解析HTML，得到
+	哪里是heading，哪里是paragraph。如果没有CSS文件，浏览器会默认的呈现。
+	HTML：结构；CSS：样式
+	style element,<style>位于HTML 的<head>内，内部使用CSS
+	<style type="text/css>
+		中间写样式
+	</style>
+	
+2)	<a href="elixirs.html">elixirs</a>:告诉浏览器elixirs这个link指向哪，指向elixirs.html这个文件
+	href attribute：告诉你destination of link
+	attribute是啥呢，attribute可以告诉你关于这个element的其他信息
+	<a>-create a link to another page
+	href ---attribute name
+	“elixirs.html” 双引号括起来的attribute value
+	elixirs 是label
+	关于attribute value的绝对位置和相对位置
+	exlixirs.html在beverages文件夹里面，可以这样写beverages/elixirs.html(相对路径)
+	返回上一个文件夹: ../lounge.html:用../ 表示上一个， parent folder
+	返回上两个文件夹： ../../XX.html
+	
+3)	短引用：<q>XXXX<\q>， 是inline element
+	长引用：<blockquote><\blockquote> 是block element
+	区别：<q>什么时候用都可以，后者是要单独的起一段很很长一句
+	##inline和block 元素
+	
+	#inline: 内联元素前后不会产生换行，一系列的内联元素都在一行内显示，直到该行排满；常见的内联元素：	
+	span,strong,em,label,select,img,br，q
+	将内联(行内)元素转换成块级元素：a{display:block;}	
+	元素的高度，宽度，顶部底部边距不可设置；元素的宽度就是它包含文字或图片的宽度，不可改变
+		
+	#block:块级元素，通常为独立的一行，会单独占一行；常见的块级元素：div, form, 
+	table,p,h1-h6,dl ,ol,ul等;块级元素把内容分隔成块状；元素的高度，宽度，行高以及顶和底部边距
+	都可以设置；元素宽度在不设置的情况下，是它本身父容器的100%；
+	讲块级元素转换为内联元素：
+	div{display:inline;}
+	
+	##:内联块状元素：同时具备内联元素，块状元素的特点{display:inline-block}就是将元素设置为内联块状元素
+	<img><input>就是内联块状元素
+	特点：和其他元素都在一行上，高度宽度可以设置，顶底边距可以设置
+	<br>换行符；只有一个，不需要两个，因为中间不需要有内容
+	#void element：像br, img这种就是，只有opening tag;
+	
+	list:
+	ul->unordered list
+	ol->ordered list
+	li->list item
+	
+	@@使用绝对定位改变div的重叠模式
+	@@CSS的继承性：某些样式具有继承性，它允许样式不仅应用于某个特定的HTML标签元素，而且应用于其后代
+	border:没有继承性
+
+	盒子模型：
+	边框就是围绕着内容以及补白的线，可以设置粗细，样式，颜色
+	border: 2px solid red;
+	border style-> dashed, dotted, solid
+		
+4)	www.starbuzzcoffee.com
+	www:name of a specific server in the domain
+	starbuzzcoffee-> domain name, must be unique
+	com->different domain endings for different purposes
+	
+	for the root folder, we just use "/"
+	http->the protocpl that needs to be used to retrieve the resource
+	URL:http://www.starbuzzcoffee.com/index.html
+	index.html->the absolute path to the resource from the root folder;
+	
+	用a element实现本页面的跳转，或目标页面的跳转
+	一个网站的源代码可能由好多个h5代码组成，有图片，和html文件；默认首页的文件夹叫root文件夹；
+	它可能含有很多子文件夹，但页面解析总是开始于root文件夹，
+	http://www.starbuzzcoffee.com/images/	
+	image文件夹是在root文件夹里面
+	http://www.starbuzzcoffee.com/
+	访问到默认路径（root 文件夹），web server一般会定位到路径下的默认文件，一般叫index.html
+	或default.html.当找到这个默认文件，返回给浏览器去解析出页面。
+	
+	例子：
+		用户在浏览器输入http://www.starbuzzcoffee.com/drinks/
+		http request：向web server问，有/drinks/这个文件吗
+		Webserver,这看起来像个路径啊，这个路径下有默认文件吗？
+		如果在路径下找到默认的eg index.html文件，则以http response返回
+	
+	a实现目标页面的跳转：（一个是用相对路径，一个是用URL实现跳转）
+	区别：相对路径的跳转针对于同一网站；URL跳转针对于不同的网站
+	1》跳转到另一个自己写的HTML页面：<a href="demo.html">this is a demo</a>
+	提前已经写好了demo页面，这里要用相对路径
+	2》跳转到一个别的网站：This<a href="http://www.baidu.com/">is baidu</a> 
+	可以加一些解释性的文字
+	
+	a element也可以有title attribute:给这个超链接加一些必要的注释，鼠标指到那的时候有显示。
+	这样的跳转，只能跳转到新页面的顶部，怎么实现跳转到某个特定的地方呢？
+	使用#+id  (如果页面不够大的话，可能看不出效果)在demo.html里加很多个  <h2 id>chai tea</h2>
+    最后一行加上<h2 id="chai">chai tea</h2>
+	在page.html下面加<a href="demo.html#chai">this is demo</a>实现直接跳转到
+	demo页面最下面的chai
+	
+	
